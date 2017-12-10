@@ -19,8 +19,9 @@ defmodule DiscworldQuotesWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", DiscworldQuotesWeb do
-  #   pipe_through :api
-  # end
+  scope "/", DiscworldQuotesWeb do
+    pipe_through :api
+
+    resources "/quotes", QuoteController, only: [:index, :show]
+  end
 end

@@ -22,6 +22,7 @@ defmodule DiscworldQuotesWeb.Router do
   scope "/", DiscworldQuotesWeb do
     pipe_through :api
 
+    get "/quotes/random", QuoteController, :random
     resources "/quotes", QuoteController, only: [:index, :show]
   end
 end

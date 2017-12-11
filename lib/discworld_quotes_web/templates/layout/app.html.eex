@@ -26,7 +26,7 @@
           <%= render @view_module, @view_template, assigns %>
         </main>
         <footer>
-            <p>Made by <a href="http://mileszs.com">MilesZS</a>. It's on <a href="http://github.com/mileszs/discworld_quotes">GitHub</a></p>
+          <p>Made by <a href="http://mileszs.com">MilesZS</a>. It's on <a href="http://github.com/mileszs/discworld_quotes">GitHub</a>. Modeled after the <a href="https://api.chucknorris.io/">Chuck Norris Jokes API</a>.</p>
         </footer>
       </div>
 

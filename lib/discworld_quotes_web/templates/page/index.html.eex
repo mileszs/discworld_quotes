@@ -1,36 +1,60 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
-</div>
-
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
-  </div>
-</div>
+<p>Ah, yes. Here we have a collection of quotes from <a href="https://en.wikipedia.org/wiki/Terry_Pratchett">the great Sir Terry Pratchett</a> and his <a href="https://en.wikipedia.org/wiki/Discworld">Discworld stories</a>. These stories have all been handpicked by <a href="http://mileszs.com">me</a>, so you'll have to contend with my biases. I'll make no apologies.</p>
+<section>
+  <h2>Usage</h2>
+  <p>Retrieve a random Discworld quote in JSON format.</p>
+  <pre>
+    <code class="request get">
+      <a title="Retrieve a random Discworld quote in JSON format." href="/quotes/random">http://<%= base_url(@conn) %>/quotes/random</a>
+    </code>
+  </pre>
+  <p>Example response:</p>
+  <pre>
+    <code class="response">
+{
+  <span class="json-key">"value":</span> "Give a man a fire and he’s warm for a day, but set fire to him and he’s warm for the rest of his life.",
+  <span class="json-key">"source":</span> "Jingo",
+  <span class="json-key">"id":</span> 9
+}
+    </code>
+  </pre>
+  <p>Retrieve the entire list of Discworld quotes
+  <pre>
+    <code class="request get">
+      <a title="Retrieve the entire list of Discworld quotes" href="/quotes">http://<%= base_url(@conn) %>/quotes</a>
+    </code>
+  </pre>
+  <p>Example response:</p>
+  <pre>
+    <code class="response">
+[
+  {
+    "value": "The whole of life is just like watching a film. Only it’s as though you always get in ten minutes after the big picture has started, and no-one will tell you the plot, so you have to work it out all yourself from the clues.",
+    "source": "Moving Pictures",
+    "id": 1
+  },
+  {
+  "value": "Real stupidity beats artificial intelligence every time.",
+  "source": "Hogfather",
+  "id": 2
+  },
+  # ...
+]
+    </code>
+  </pre>
+  <p>Retrieve a single Discworld quote by ID.</p>
+  <pre>
+    <code class="request get">
+      <a title="Retrieve a single Discworld quote by ID." href="/quotes/1">http://<%= base_url(@conn) %>/quotes/1</a>
+    </code>
+  </pre>
+  <p>Example response:</p>
+  <pre>
+    <code class="response">
+{
+  <span class="json-key">"value":</span> "The whole of life is just like watching a film. Only it’s as though you always get in ten minutes after the big picture has started, and no-one will tell you the plot, so you have to work it out all yourself from the clues.",
+  <span class="json-key">"source":</span>: "Moving Pictures",
+  <span class="json-key">"id":</span> 9
+}
+    </code>
+  </pre>
+</section>

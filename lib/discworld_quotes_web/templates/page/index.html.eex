@@ -4,7 +4,7 @@
   <p>Retrieve a random Discworld quote in JSON format.</p>
   <pre>
     <code class="request get">
-      <a title="Retrieve a random Discworld quote in JSON format." href="/quotes/random">http://<%= base_url(@conn) %>/quotes/random</a>
+      <a title="Retrieve a random Discworld quote in JSON format." href="/quotes/random"><%= qurl(@conn, "random") %></a>
     </code>
   </pre>
   <p>Example response:</p>
@@ -13,14 +13,15 @@
 {
   <span class="json-key">"value":</span> "Give a man a fire and he’s warm for a day, but set fire to him and he’s warm for the rest of his life.",
   <span class="json-key">"source":</span> "Jingo",
-  <span class="json-key">"id":</span> 9
+  <span class="json-key">"id":</span> 9,
+  <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 1}) %>
 }
     </code>
   </pre>
   <p>Retrieve the entire list of Discworld quotes
   <pre>
     <code class="request get">
-      <a title="Retrieve the entire list of Discworld quotes" href="/quotes">http://<%= base_url(@conn) %>/quotes</a>
+      <a title="Retrieve the entire list of Discworld quotes" href="/quotes"><%= qurl(@conn) %></a>
     </code>
   </pre>
   <p>Example response:</p>
@@ -28,14 +29,16 @@
     <code class="response">
 [
   {
-    "value": "The whole of life is just like watching a film. Only it’s as though you always get in ten minutes after the big picture has started, and no-one will tell you the plot, so you have to work it out all yourself from the clues.",
-    "source": "Moving Pictures",
-    "id": 1
+    <span class="json-key">"value":</span> "The whole of life is just like watching a film. Only it’s as though you always get in ten minutes after the big picture has started, and no-one will tell you the plot, so you have to work it out all yourself from the clues.",
+    <span class="json-key">"source":</span> "Moving Pictures",
+    <span class="json-key">"id":</span> 1,
+    <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 1}) %>
   },
   {
-  "value": "Real stupidity beats artificial intelligence every time.",
-  "source": "Hogfather",
-  "id": 2
+    <span class="json-key">"value":</span>: "Real stupidity beats artificial intelligence every time.",
+    <span class="json-key">"source":</span> "Hogfather",
+    <span class="json-key">"id":</span> 2,
+    <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 2}) %>
   },
   # ...
 ]
@@ -44,7 +47,7 @@
   <p>Retrieve a single Discworld quote by ID.</p>
   <pre>
     <code class="request get">
-      <a title="Retrieve a single Discworld quote by ID." href="/quotes/1">http://<%= base_url(@conn) %>/quotes/1</a>
+      <a title="Retrieve a single Discworld quote by ID." href="/quotes/1"><%= qurl(@conn, %{id: 1}) %></a>
     </code>
   </pre>
   <p>Example response:</p>
@@ -52,8 +55,9 @@
     <code class="response">
 {
   <span class="json-key">"value":</span> "The whole of life is just like watching a film. Only it’s as though you always get in ten minutes after the big picture has started, and no-one will tell you the plot, so you have to work it out all yourself from the clues.",
-  <span class="json-key">"source":</span>: "Moving Pictures",
-  <span class="json-key">"id":</span> 9
+  <span class="json-key">"source":</span> "Moving Pictures",
+  <span class="json-key">"id":</span> 9,
+  <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 1}) %>
 }
     </code>
   </pre>

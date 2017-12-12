@@ -13,6 +13,11 @@ defmodule DiscworldQuotesWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :slack do
+    plug :accepts, ["json", "html"]
+    plug DiscworldQuotesWeb.Plugs.SlackTokenCheck
+  end
+
   scope "/", DiscworldQuotesWeb do
     pipe_through :browser # Use the default browser stack
 
@@ -24,5 +29,9 @@ defmodule DiscworldQuotesWeb.Router do
 
     get "/quotes/random", QuoteController, :random
     resources "/quotes", QuoteController, only: [:index, :show]
+  end
+
+  scope "/", DiscworldQuotesWeb do
+    post "/slack", SlackController, :index
   end
 end

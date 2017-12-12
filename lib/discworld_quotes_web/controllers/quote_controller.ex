@@ -4,8 +4,6 @@ defmodule DiscworldQuotesWeb.QuoteController do
   alias DiscworldQuotes.Quotes
   alias DiscworldQuotes.Quotes.Quote
 
-  import Ecto.Query, only: [from: 2]
-
   action_fallback DiscworldQuotesWeb.FallbackController
 
   def index(conn, _params) do
@@ -19,10 +17,7 @@ defmodule DiscworldQuotesWeb.QuoteController do
   end
 
   def random(conn, _params) do
-    quote = (from item in Quote, select: item.id)
-    |> DiscworldQuotes.Repo.all
-    |> Enum.random
-    |> Quotes.get_quote!
+    quote = Quotes.get_random_quote!
     render(conn, "show.json", quote: quote)
   end
 end

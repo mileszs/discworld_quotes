@@ -38,6 +38,27 @@ defmodule DiscworldQuotes.Quotes do
   def get_quote!(id), do: Repo.get!(Quote, id)
 
   @doc """
+  Gets a single quote at random
+
+  Raises `Ecto.NoResultsError` if the Quote does not exist.
+
+  ## Examples
+
+      iex> get_random_quote!
+      %Quote{}
+
+      iex> get_random_quote!
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_random_quote! do
+    (from item in Quote, select: item.id)
+    |> Repo.all
+    |> Enum.random
+    |> get_quote!
+  end
+
+  @doc """
   Creates a quote.
 
   ## Examples

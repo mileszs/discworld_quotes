@@ -1,5 +1,6 @@
 defmodule DiscworldQuotes.Quotes.QuoteUrls do
   def url(conn, "random"), do: "#{base_url(conn)}/quotes/random"
+  def url(conn, "search"), do: "#{base_url(conn)}/quotes/search"
   def url(conn, quote), do: "#{base_url(conn)}/quotes/#{quote.id}"
   def url(conn), do: "#{base_url(conn)}/quotes"
 

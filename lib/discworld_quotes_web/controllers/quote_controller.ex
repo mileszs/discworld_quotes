@@ -10,6 +10,11 @@ defmodule DiscworldQuotesWeb.QuoteController do
     render(conn, "index.json", quotes: quotes)
   end
 
+  def search(conn, %{"query" => query}) do
+    quotes = Quotes.search_quotes(query)
+    render(conn, "index.json", quotes: quotes)
+  end
+
   def show(conn, %{"id" => id}) do
     quote = Quotes.get_quote!(id)
     render(conn, "show.json", quote: quote)

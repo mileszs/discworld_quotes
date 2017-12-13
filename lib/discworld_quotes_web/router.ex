@@ -28,6 +28,7 @@ defmodule DiscworldQuotesWeb.Router do
     pipe_through :api
 
     get "/quotes/random", QuoteController, :random
+    get "/quotes/search", QuoteController, :search
     resources "/quotes", QuoteController, only: [:index, :show]
   end
 

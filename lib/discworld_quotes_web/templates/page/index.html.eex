@@ -1,24 +1,7 @@
 <p>Ah, yes. Here we have a collection of quotes from <a href="https://en.wikipedia.org/wiki/Terry_Pratchett">the great Sir Terry Pratchett</a> and his <a href="https://en.wikipedia.org/wiki/Discworld">Discworld stories</a>. These stories have all been handpicked by <a href="http://mileszs.com">me</a>, so you'll have to contend with my biases. I'll make no apologies.</p>
 <section>
   <h2>Usage</h2>
-  <p>Retrieve a random Discworld quote in JSON format.</p>
-  <pre>
-    <code class="request get">
-      <a title="Retrieve a random Discworld quote in JSON format." href="/quotes/random"><%= qurl(@conn, "random") %></a>
-    </code>
-  </pre>
-  <p>Example response:</p>
-  <pre>
-    <code class="response">
-{
-  <span class="json-key">"value":</span> "Give a man a fire and he’s warm for a day, but set fire to him and he’s warm for the rest of his life.",
-  <span class="json-key">"source":</span> "Jingo",
-  <span class="json-key">"id":</span> 9,
-  <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 1}) %>
-}
-    </code>
-  </pre>
-  <p>Retrieve the entire list of Discworld quotes
+  <p>Retrieve the entire list of Discworld quotes</p>
   <pre>
     <code class="request get">
       <a title="Retrieve the entire list of Discworld quotes" href="/quotes"><%= qurl(@conn) %></a>
@@ -44,6 +27,49 @@
 ]
     </code>
   </pre>
+  <p>Search the list of Discworld quotes</p>
+  <pre>
+    <code class="request get">
+      <a title="Search the list of Discworld quotes" href="/search?query=men"><%= qurl(@conn, "search") %>?query=men</a>
+    </code>
+  </pre>
+  <p>Example response:</p>
+  <pre>
+    <code class="response">
+[
+  {
+    <span class="json-key">"value":</span> "If you trust in yourself.... and believe in your dreams.... and follow your star... you'll still get beaten by people who spent their time working hard and learning things and weren't so lazy.",
+    <span class="json-key">"source":</span> "The Wee Free Men",
+    <span class="json-key">"id":</span> 19,
+    <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 19}) %>
+  },
+  {
+    <span class="json-key">"value":</span>: "Real stupidity beats artificial intelligence every time.",
+    <span class="json-key">"source":</span> "Monstrous Regiment",
+    <span class="json-key">"id":</span> 21,
+    <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 21}) %>
+  },
+  # ...
+]
+    </code>
+  </pre>
+  <p>Retrieve a random Discworld quote in JSON format.</p>
+  <pre>
+    <code class="request get">
+      <a title="Retrieve a random Discworld quote in JSON format." href="/quotes/random"><%= qurl(@conn, "random") %></a>
+    </code>
+  </pre>
+  <p>Example response:</p>
+  <pre>
+    <code class="response">
+{
+  <span class="json-key">"value":</span> "Give a man a fire and he’s warm for a day, but set fire to him and he’s warm for the rest of his life.",
+  <span class="json-key">"source":</span> "Jingo",
+  <span class="json-key">"id":</span> 9,
+  <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 9}) %>
+}
+    </code>
+  </pre>
   <p>Retrieve a single Discworld quote by ID.</p>
   <pre>
     <code class="request get">
@@ -56,7 +82,7 @@
 {
   <span class="json-key">"value":</span> "The whole of life is just like watching a film. Only it’s as though you always get in ten minutes after the big picture has started, and no-one will tell you the plot, so you have to work it out all yourself from the clues.",
   <span class="json-key">"source":</span> "Moving Pictures",
-  <span class="json-key">"id":</span> 9,
+  <span class="json-key">"id":</span> 1,
   <span class="json-key">"url:"</span> <%= qurl(@conn, %{id: 1}) %>
 }
     </code>

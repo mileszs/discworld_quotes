@@ -11,11 +11,14 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: darkgreen;
-  text-decoration: none;
 }
 
 a:hover {
   color: #666;
+}
+
+code a {
+  text-decoration: none;
 }
 
 pre, code {

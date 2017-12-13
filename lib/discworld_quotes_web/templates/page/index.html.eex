@@ -1,6 +1,7 @@
 <p>Ah, yes. Here we have a collection of quotes from <a href="https://en.wikipedia.org/wiki/Terry_Pratchett">the great Sir Terry Pratchett</a> and his <a href="https://en.wikipedia.org/wiki/Discworld">Discworld stories</a>. These stories have all been handpicked by <a href="http://mileszs.com">me</a>, so you'll have to contend with my biases. I'll make no apologies.</p>
 <section>
   <h2>Usage</h2>
+  <h3>List</h3>
   <p>Retrieve the entire list of Discworld quotes</p>
   <pre>
     <code class="request get">
@@ -27,6 +28,7 @@
 ]
     </code>
   </pre>
+  <h3>Search</h3>
   <p>Search the list of Discworld quotes</p>
   <pre>
     <code class="request get">
@@ -53,6 +55,7 @@
 ]
     </code>
   </pre>
+  <h3>Random</h3>
   <p>Retrieve a random Discworld quote in JSON format.</p>
   <pre>
     <code class="request get">
@@ -70,6 +73,7 @@
 }
     </code>
   </pre>
+  <h3>Single</h3>
   <p>Retrieve a single Discworld quote by ID.</p>
   <pre>
     <code class="request get">

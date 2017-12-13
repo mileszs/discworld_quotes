@@ -32,7 +32,7 @@
   <p>Search the list of Discworld quotes</p>
   <pre>
     <code class="request get">
-      <a title="Search the list of Discworld quotes" href="/search?query=men"><%= qurl(@conn, "search") %>?query=men</a>
+      <a title="Search the list of Discworld quotes" href="/quotes/search?query=men"><%= qurl(@conn, "search") %>?query=men</a>
     </code>
   </pre>
   <p>Example response:</p>

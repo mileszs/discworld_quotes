@@ -14,8 +14,23 @@ defmodule DiscworldQuotesWeb.ErrorViewTest do
            "Internal server error"
   end
 
+  test "render 404.json" do
+    assert render(DiscworldQuotesWeb.ErrorView, "404.json", []) ==
+      %{errors: %{detail: "Page not found"}}
+  end
+
+  test "render 422.json" do
+    assert render(DiscworldQuotesWeb.ErrorView, "422.json", []) ==
+      %{errors: %{detail: "Unprocessable entity"}}
+  end
+
+  test "render 500.json" do
+    assert render(DiscworldQuotesWeb.ErrorView, "500.json", []) ==
+      %{errors: %{detail: "Internal server error"}}
+  end
+
   test "render any other" do
-    assert render_to_string(DiscworldQuotesWeb.ErrorView, "505.html", []) ==
-           "Internal server error"
+    assert render(DiscworldQuotesWeb.ErrorView, "505.html", []) ==
+      %{errors: %{detail: "Internal server error"}}
   end
 end

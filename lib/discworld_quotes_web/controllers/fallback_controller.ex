@@ -6,15 +6,15 @@ defmodule DiscworldQuotesWeb.FallbackController do
   """
   use DiscworldQuotesWeb, :controller
 
-  def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
+  def call(conn, :unprocessable_entity) do
     conn
     |> put_status(:unprocessable_entity)
-    |> render(DiscworldQuotesWeb.ChangesetView, "error.json", changeset: changeset)
+    |> render(DiscworldQuotesWeb.ChangesetView, "422.json")
   end
 
   def call(conn, {:error, :not_found}) do
     conn
     |> put_status(:not_found)
-    |> render(DiscworldQuotesWeb.ErrorView, :"404")
+    |> render(DiscworldQuotesWeb.ErrorView, :"404.json")
   end
 end

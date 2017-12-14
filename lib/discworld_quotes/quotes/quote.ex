@@ -1,14 +1,18 @@
 defmodule DiscworldQuotes.Quotes.Quote do
   use Ecto.Schema
+  use DiscworldQuotes.Search, "quotes"
   import Ecto.Changeset
   alias DiscworldQuotes.Quotes.Quote
-
 
   schema "quotes" do
     field :source, :string
     field :value, :string
 
     timestamps()
+  end
+
+  def search(query) do
+    do_search(query)
   end
 
   @doc false

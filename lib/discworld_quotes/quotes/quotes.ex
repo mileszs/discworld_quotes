@@ -27,18 +27,7 @@ defmodule DiscworldQuotes.Quotes do
   Returns [Quote]
   """
   def search_quotes(query) do
-    formatted = query |> String.replace(" ", "|")
-    Ecto.Adapters.SQL.query!(
-      DiscworldQuotes.Repo,
-      "SELECT * FROM quotes WHERE id IN (SELECT searchable_id FROM searches WHERE to_tsvector('english', term) @@ to_tsquery($1));",
-      [formatted]
-    )
-    |> result_to_struct
-  end
-
-  defp result_to_struct(res) do
-    cols = Enum.map res.columns, &(String.to_atom(&1))
-    Enum.map res.rows, fn(row) -> struct(Quote, Enum.zip(cols, row)) end
+    Quote.search(query)
   end
 
   @doc """

@@ -5,8 +5,6 @@ defmodule DiscworldQuotesWeb.QuoteControllerTest do
   alias DiscworldQuotes.Quotes.Quote
 
   @create_attrs %{source: "some source", value: "some value"}
-  @update_attrs %{source: "some updated source", value: "some updated value"}
-  @invalid_attrs %{source: nil, value: nil}
 
   def fixture(:quote) do
     {:ok, quote} = Quotes.create_quote(@create_attrs)
@@ -18,59 +16,43 @@ defmodule DiscworldQuotesWeb.QuoteControllerTest do
   end
 
   describe "index" do
+    setup [:create_quote]
+
     test "lists all quotes", %{conn: conn} do
       conn = get conn, quote_path(conn, :index)
-      assert json_response(conn, 200)["data"] == []
+      assert [%{"source" => _}] = json_response(conn, 200)
     end
   end
 
-  describe "create quote" do
-    test "renders quote when data is valid", %{conn: conn} do
-      conn = post conn, quote_path(conn, :create), quote: @create_attrs
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+  describe "search" do
+    setup [:create_quote]
 
+    test "search all quotes", %{conn: conn} do
+      conn = get conn, quote_path(conn, :search, %{query: "value"})
+      assert [%{"source" => _}] = json_response(conn, 200)
+    end
+  end
+
+  describe "show" do
+    setup [:create_quote]
+
+    test "renders quote", %{conn: conn, quote: %Quote{id: id}} do
       conn = get conn, quote_path(conn, :show, id)
-      assert json_response(conn, 200)["data"] == %{
+      assert json_response(conn, 200) == %{
         "id" => id,
         "source" => "some source",
-        "value" => "some value"}
-    end
-
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post conn, quote_path(conn, :create), quote: @invalid_attrs
-      assert json_response(conn, 422)["errors"] != %{}
+        "value" => "some value",
+        "url" => "http://www.example.com/quotes/#{id}"
+      }
     end
   end
 
-  describe "update quote" do
+  describe "random" do
     setup [:create_quote]
 
-    test "renders quote when data is valid", %{conn: conn, quote: %Quote{id: id} = quote} do
-      conn = put conn, quote_path(conn, :update, quote), quote: @update_attrs
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
-
-      conn = get conn, quote_path(conn, :show, id)
-      assert json_response(conn, 200)["data"] == %{
-        "id" => id,
-        "source" => "some updated source",
-        "value" => "some updated value"}
-    end
-
-    test "renders errors when data is invalid", %{conn: conn, quote: quote} do
-      conn = put conn, quote_path(conn, :update, quote), quote: @invalid_attrs
-      assert json_response(conn, 422)["errors"] != %{}
-    end
-  end
-
-  describe "delete quote" do
-    setup [:create_quote]
-
-    test "deletes chosen quote", %{conn: conn, quote: quote} do
-      conn = delete conn, quote_path(conn, :delete, quote)
-      assert response(conn, 204)
-      assert_error_sent 404, fn ->
-        get conn, quote_path(conn, :show, quote)
-      end
+    test "renders random quote", %{conn: conn} do
+      conn = get conn, quote_path(conn, :random)
+      assert %{"id" => _id, "source" => _source, "value" => _value, "url" => _url} = json_response(conn, 200)
     end
   end
 

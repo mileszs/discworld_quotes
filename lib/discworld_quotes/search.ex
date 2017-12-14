@@ -1,7 +1,7 @@
 defmodule DiscworldQuotes.Search do
   defmacro __using__(table) do
     quote do
-      def do_search(term) do
+      def search(term) do
         term
         |> String.replace(" ", "|")
         |> query

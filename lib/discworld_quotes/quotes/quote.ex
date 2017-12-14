@@ -11,10 +11,6 @@ defmodule DiscworldQuotes.Quotes.Quote do
     timestamps()
   end
 
-  def search(query) do
-    do_search(query)
-  end
-
   @doc false
   def changeset(%Quote{} = quote, attrs) do
     quote

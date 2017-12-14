@@ -2,7 +2,6 @@ defmodule DiscworldQuotesWeb.SlackController do
   use DiscworldQuotesWeb, :controller
 
   alias DiscworldQuotes.Quotes
-  alias DiscworldQuotes.Quotes.Quote
 
   action_fallback DiscworldQuotesWeb.FallbackController
 

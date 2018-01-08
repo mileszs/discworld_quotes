@@ -1,11 +1,11 @@
-<p>Ah, yes. Here we have a collection of quotes from <a href="https://en.wikipedia.org/wiki/Terry_Pratchett">the great Sir Terry Pratchett</a> and his <a href="https://en.wikipedia.org/wiki/Discworld">Discworld stories</a>. These stories have all been handpicked by <a href="http://mileszs.com">me</a>, so you'll have to contend with my biases. I'll make no apologies.</p>
+<p>Ah, yes. Here we have a collection of quotes from <a href="https://en.wikipedia.org/wiki/Terry_Pratchett">the great Sir Terry Pratchett</a> and his <a href="https://en.wikipedia.org/wiki/Discworld">Discworld stories</a>. The quotes contained herein were collected by the fine L-Space Librarians <a href="https://www.lspace.org/books/pqf/">here</a>. Their wonderful efforts over the years have allowed me to collect them here for programmatic consumption. Do enjoy. Please. Thank you. You're welcome.</p>
 <section>
   <h2>Usage</h2>
   <h3>List</h3>
-  <p>Retrieve the entire list of Discworld quotes</p>
+  <p>Retrieve the entire list of quotes</p>
   <pre>
     <code class="request get">
-      <a title="Retrieve the entire list of Discworld quotes" href="/quotes"><%= qurl(@conn) %></a>
+      <a title="Retrieve the entire list of quotes" href="/quotes"><%= qurl(@conn) %></a>
     </code>
   </pre>
   <p>Example response:</p>
@@ -29,10 +29,10 @@
     </code>
   </pre>
   <h3>Search</h3>
-  <p>Search the list of Discworld quotes</p>
+  <p>Search the list of quotes</p>
   <pre>
     <code class="request get">
-      <a title="Search the list of Discworld quotes" href="/quotes/search?query=men"><%= qurl(@conn, "search") %>?query=men</a>
+      <a title="Search the list of quotes" href="/quotes/search?query=men"><%= qurl(@conn, "search") %>?query=men</a>
     </code>
   </pre>
   <p>Example response:</p>
@@ -56,10 +56,10 @@
     </code>
   </pre>
   <h3>Random</h3>
-  <p>Retrieve a random Discworld quote in JSON format.</p>
+  <p>Retrieve a random quote in JSON format.</p>
   <pre>
     <code class="request get">
-      <a title="Retrieve a random Discworld quote in JSON format." href="/quotes/random"><%= qurl(@conn, "random") %></a>
+      <a title="Retrieve a random quote in JSON format." href="/quotes/random"><%= qurl(@conn, "random") %></a>
     </code>
   </pre>
   <p>Example response:</p>
@@ -74,10 +74,10 @@
     </code>
   </pre>
   <h3>Single</h3>
-  <p>Retrieve a single Discworld quote by ID.</p>
+  <p>Retrieve a single quote by ID.</p>
   <pre>
     <code class="request get">
-      <a title="Retrieve a single Discworld quote by ID." href="/quotes/1"><%= qurl(@conn, %{id: 1}) %></a>
+      <a title="Retrieve a single quote by ID." href="/quotes/1"><%= qurl(@conn, %{id: 1}) %></a>
     </code>
   </pre>
   <p>Example response:</p>

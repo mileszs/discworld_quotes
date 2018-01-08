@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello DiscworldQuotes!</title>
+    <title>PQF API</title>
     <link href="https://fonts.googleapis.com/css?family=Frijole|Open+Sans|Roboto+Mono" rel="stylesheet">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
@@ -16,7 +16,7 @@
     <div class="grid-container">
       <div class="grid-70 prefix-15">
         <header class="header">
-          <h1>Discworld Quotes</h1>
+          <h1>PQF QPI</h1>
         </header>
 
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
